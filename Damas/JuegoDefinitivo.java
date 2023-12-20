@@ -2,7 +2,7 @@ package Damas;
 
 import java.util.Scanner;
 
-public class Prueba2 {
+public class JuegoDefinitivo {
 	
 	public static void imprimirMatriz(int[][] num) {
 		
@@ -59,12 +59,9 @@ public class Prueba2 {
 					if(i == 0) {
 						System.out.print("  ╋");
 					}
-					
-					System.out.print("━━━╋");				
-					
+					System.out.print("━━━╋");
 				} System.out.println("");;
 			}
-			
 			
 		}
 		
@@ -119,7 +116,6 @@ public class Prueba2 {
 		
 		int[] dondeEsta = separarInt(mov[0]);
 		int[] dondeVa = separarInt(mov[1]);
-		
 		
 		if(turno%2 == 1) { // Diferenciar turno de blancas y negras
 			
@@ -183,8 +179,6 @@ public class Prueba2 {
 				
 			}
 			
-			
-			
 		} else { // Negras
 			// Diferenciar entre si mata o solo mueve
 			if(tablero[dondeEsta[0]+1][dondeEsta[1]-1]==2 || tablero[dondeEsta[0]+1][dondeEsta[1]+1]==2) {
@@ -204,7 +198,6 @@ public class Prueba2 {
 			}
 		}
 		
-		
 	}
 	
 	public static boolean comprobarMov (int[] mov, int turno, int[][] tablero) {
@@ -212,7 +205,6 @@ public class Prueba2 {
 		boolean devuelta = true;
 		int[] dondeEsta = separarInt(mov[0]);
 		int[] dondeVa = separarInt(mov[1]);
-		
 		// Comprobar que el movimiento este dentro de el rango/tablero
 		if(dondeEsta[0]<0 || dondeEsta[0]>7 || dondeEsta[1]<0 || dondeEsta[1]>7) {
 			return false;
@@ -276,8 +268,6 @@ public class Prueba2 {
 				return false;
 			}
 			
-			
-			
 		} else { // Y si no es turno de blancas es el turno de negras
 			
 			
@@ -338,9 +328,7 @@ public class Prueba2 {
 					}
 					movimientoFichas(tablero,movimientos,turno);
 					imprimirMatriz(tablero);
-				}
-				
-				
+				}	
 				
 			}
 			System.out.println("");
