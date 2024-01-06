@@ -1,5 +1,12 @@
 package Damas;
 
+/*
+ * Proyecto Damas en terminal
+ * 
+ * Andreu Cano Felici
+ * 
+ */
+
 import java.util.Scanner;
 
 public class JuegoDefinitivo {
@@ -103,13 +110,15 @@ public class JuegoDefinitivo {
 	}
 
 	public static void instruccionesDamas() {
-		System.out.println("InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n"
-				+ "InstrucionesInstrucionesInstrucionesInstrucionesInstrucionesInstruciones \n");
+		System.out.println("");
+		System.out.println("--Instruciones--\n"
+				+ "Para jugar ha esta damas es muy sencillo, cada mivimiento va por turnos\n"
+				+ "el movimiento de las fichas debe ser: \n"
+				+ "\"xx\" (la posicion de la ficha que queremos mover) y \"xx\" (donde queremos mover)\n"
+				+ "*Si un movimiento es incorrecto automaticamente se pondrá por pantalla.\n"
+				+ "\n"
+				+ "Si se quiere comprobar el resultado basta con teclear \"-1\"\n"
+				+ "saldrá un menú con diferentes opciones.");
 	}
 
 	public static void movimientoFichas (int[][] tablero, int[] mov, int turno) {
@@ -125,13 +134,7 @@ public class JuegoDefinitivo {
 					
 					tablero[dondeVa[0]][dondeVa[1]]=2;
 					tablero[dondeEsta[0]][dondeEsta[1]]=0;
-					// Si va a la derecha o a la izquierda para borrar la ficha que mata.
-					
-					if(tablero[dondeEsta[0]-2][dondeEsta[1]-2]==tablero[dondeVa[0]][dondeVa[1]]) {
-						tablero[dondeEsta[0]-1][dondeEsta[1]-1]=0;
-					} else {
-						tablero[dondeEsta[0]-1][dondeEsta[1]+1]=0;
-					}
+					tablero[dondeEsta[0]-1][dondeEsta[1]+1]=0;
 					
 				} else {
 					tablero[dondeVa[0]][dondeVa[1]]=2;
@@ -144,13 +147,7 @@ public class JuegoDefinitivo {
 					
 					tablero[dondeVa[0]][dondeVa[1]]=2;
 					tablero[dondeEsta[0]][dondeEsta[1]]=0;
-					// Si va a la derecha o a la izquierda para borrar la ficha que mata.
-					
-					if(tablero[dondeEsta[0]-2][dondeEsta[1]-2]==tablero[dondeVa[0]][dondeVa[1]]) {
-						tablero[dondeEsta[0]-1][dondeEsta[1]-1]=0;
-					} else {
-						tablero[dondeEsta[0]-1][dondeEsta[1]+1]=0;
-					}
+					tablero[dondeEsta[0]-1][dondeEsta[1]-1]=0;
 					
 				} else {
 					tablero[dondeVa[0]][dondeVa[1]]=2;
@@ -180,22 +177,57 @@ public class JuegoDefinitivo {
 			}
 			
 		} else { // Negras
-			// Diferenciar entre si mata o solo mueve
-			if(tablero[dondeEsta[0]+1][dondeEsta[1]-1]==2 || tablero[dondeEsta[0]+1][dondeEsta[1]+1]==2) {
+			
+			if(dondeEsta[1]==0) {
 				
-				tablero[dondeVa[0]][dondeVa[1]]=1;
-				tablero[dondeEsta[0]][dondeEsta[1]]=0;
-				// Si va a la derecha o a la izquierda para borrar la ficha que mata.
-				if(tablero[dondeEsta[0]+2][dondeEsta[1]-2]==tablero[dondeVa[0]][dondeVa[1]]) {
-					tablero[dondeEsta[0]+1][dondeEsta[1]-1]=0;
-				} else {
+				// Diferenciar entre si mata o solo mueve
+				if(tablero[dondeEsta[0]+1][dondeEsta[1]+1]==2) {
+					//mover la ficha
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					// remover la ficha de su antigua lugar
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
+					//borrar la ficha que mata
 					tablero[dondeEsta[0]+1][dondeEsta[1]+1]=0;
+					
+				} else {
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
+				}
+				
+			} else if (dondeEsta[1]==7) {
+				
+				if(tablero[dondeEsta[0]+1][dondeEsta[1]-1]==2) {
+					
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
+					tablero[dondeEsta[0]+1][dondeEsta[1]-1]=0;
+					
+				} else {
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
 				}
 				
 			} else {
-				tablero[dondeVa[0]][dondeVa[1]]=1;
-				tablero[dondeEsta[0]][dondeEsta[1]]=0;
-			}
+				
+				// Diferenciar entre si mata o solo mueve
+				if(tablero[dondeEsta[0]+1][dondeEsta[1]-1]==2 || tablero[dondeEsta[0]+1][dondeEsta[1]+1]==2) {
+					
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
+					// Si va a la derecha o a la izquierda para borrar la ficha que mata.
+					if(tablero[dondeEsta[0]+2][dondeEsta[1]-2]==tablero[dondeVa[0]][dondeVa[1]]) {
+						tablero[dondeEsta[0]+1][dondeEsta[1]-1]=0;
+					} else {
+						tablero[dondeEsta[0]+1][dondeEsta[1]+1]=0;
+					}
+					
+				} else {
+					tablero[dondeVa[0]][dondeVa[1]]=1;
+					tablero[dondeEsta[0]][dondeEsta[1]]=0;
+				}
+				
+			}	
+			
 		}
 		
 	}
@@ -246,7 +278,7 @@ public class JuegoDefinitivo {
 						
 						if (tablero[dondeEsta[0]-1][dondeEsta[1]-1] == 1 && dondeEsta[0]-2 == dondeVa[0] && dondeEsta[1]-2 == dondeVa[1]) {
 							
-						} else if(tablero[dondeEsta[0]-1][dondeEsta[0]] == 1 && dondeEsta[0]-2 == dondeVa[0] && dondeEsta[1]+2 == dondeVa[1]) {
+						} else if(tablero[dondeEsta[0]-1][dondeEsta[1]+1] == 1 && dondeEsta[0]-2 == dondeVa[0] && dondeEsta[1]+2 == dondeVa[1]) {
 							
 						} else {
 							
@@ -270,10 +302,60 @@ public class JuegoDefinitivo {
 			
 		} else { // Y si no es turno de blancas es el turno de negras
 			
-			
+			if(tablero[dondeEsta[0]][dondeEsta[1]] == 1) { // Comprueba que la ficha que quiere mover es negra
+				
+				// comprueba que donde quiere mover no haya una ficha ya
+				if (tablero[dondeVa[0]][dondeVa[1]] == 1 || tablero[dondeVa[0]][dondeVa[1]] == 2) {
+					return false;
+				} else {
+					
+					if(dondeEsta[1] == 0) { // si la ficha esta en x-0 comprobamos solo hacia un lado para que no de out of bounce
+						
+						if(tablero[dondeEsta[0]+1][dondeEsta[1]+1] == 2 && dondeVa[0] == dondeEsta[0]+2 && dondeVa[1] == dondeEsta[1]+2) {
+							
+						} else if(dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]+1 == dondeVa[1]) {
+							
+						} else {
+							return false;
+						}
+						
+					} else if(dondeEsta[1] == 7) { // si la ficha esta en x-7 comprobamos solo hacia un lado para que no de out of bounce
+						
+						if(tablero[dondeEsta[0]+1][dondeEsta[1]-1] == 2 && dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
+							
+						} else if (dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
+							
+						} else {
+							return false;
+						}
+						
+					} else { // Comprueba que el movimiento de la ficha es correcto
+						
+						if (tablero[dondeEsta[0]+1][dondeEsta[1]-1] == 2 && dondeEsta[0]+2 == dondeVa[0] && dondeEsta[1]-2 == dondeVa[1]) {
+							
+						} else if(tablero[dondeEsta[0]+1][dondeEsta[1]+1] == 2 && dondeEsta[0]+2 == dondeVa[0] && dondeEsta[1]+2 == dondeVa[1]) {
+							
+						} else {
+							
+							if(dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
+								
+							} else if(dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]+1 == dondeVa[1]) {
+								
+							} else {
+								return false;
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			} else {
+				return false;
+			}	
 			
 		}
-		
 		return devuelta;
 	}
 	
@@ -283,6 +365,36 @@ public class JuegoDefinitivo {
 		num /= 10;
 		mov[0] = num%10;
 		return mov;
+	}
+	
+	public static void comprobarPartida(int[][] tablero) {
+		System.out.println("");
+		int blancas = 0 ;
+		int negras = 0 ;
+		for(int con =0; tablero[0].length >con; con++) {
+			for (int cont = 0; tablero[0].length > cont; cont++) {
+				if(tablero[con][cont]==2) {
+					blancas++;
+				} else if (tablero[con][cont]==1) {
+					negras++;
+				}
+			}
+		}
+		
+		if(blancas==negras) {
+			System.out.println("-------------------------");
+			System.out.println("        EMPATE!");
+			System.out.println("-------------------------");
+		} else if (blancas > negras) {
+			System.out.println("-------------------------");
+			System.out.println("     GANAN BLANCAS!");
+			System.out.println("-------------------------");
+		} else {
+			System.out.println("-------------------------");
+			System.out.println("     GANAN NEGRAS!");
+			System.out.println("-------------------------");
+		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -316,11 +428,35 @@ public class JuegoDefinitivo {
 						System.out.println("Turno: " + turno + " Negras");
 					}
 					System.out.print("Dime tu Movimiento: ");
-					movimientos[0] = sc.nextInt(); 
-					movimientos[1] = sc.nextInt();
+					movimientos[0] = sc.nextInt();
+					
+					//menu de partida	
+					if (movimientos[0]==-1) {
+						System.out.println("");
+						System.out.println("[1]Comprobar Resultado");
+						System.out.println("[2]Continuar Partida");
+						System.out.println("[0]Salir");
+						System.out.println("-------------------------");
+						System.out.print("Seleccione: ");
+						int select = sc.nextInt();
+						
+						if(select==0) {
+							System.out.println("");
+							break;
+						} else if (select==1) {
+							comprobarPartida(tablero);
+							break;
+						}
+						
+					} else {
+						movimientos[1] = sc.nextInt();
+					}
+									
 					if(comprobarMov(movimientos, turno, tablero) == false) {
 						while(comprobarMov(movimientos, turno, tablero) != true) {
-							System.out.println("Movimiento incorrecto! \n");
+							if(movimientos[0]!=-1) {
+								System.out.println("Movimiento incorrecto! \n");
+							} 
 							System.out.print("Dime tu Movimiento: ");
 							movimientos[0] = sc.nextInt(); 
 							movimientos[1] = sc.nextInt();
@@ -332,6 +468,7 @@ public class JuegoDefinitivo {
 				
 			}
 			System.out.println("");
+			System.out.println("--Inicio--");
 			System.out.println("-------------------------");
 			System.out.println("[1]Instrucciones");
 			System.out.println("[2]Nueva Partida");
