@@ -266,7 +266,7 @@ public class JuegoDefinitivo {
 						
 					} else if(dondeEsta[1] == 7) { // si la ficha esta en x-7 comprobamos solo hacia un lado para que no de out of bounce
 						
-						if(tablero[dondeEsta[0]-1][dondeEsta[1]-1] == 1 && dondeEsta[0]-1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
+						if(tablero[dondeEsta[0]-1][dondeEsta[1]-1] == 1 && dondeEsta[0]-2 == dondeVa[0] && dondeEsta[1]-2 == dondeVa[1]) {
 							
 						} else if (dondeEsta[0]-1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
 							
@@ -321,7 +321,7 @@ public class JuegoDefinitivo {
 						
 					} else if(dondeEsta[1] == 7) { // si la ficha esta en x-7 comprobamos solo hacia un lado para que no de out of bounce
 						
-						if(tablero[dondeEsta[0]+1][dondeEsta[1]-1] == 2 && dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
+						if(tablero[dondeEsta[0]+1][dondeEsta[1]-1] == 2 && dondeEsta[0]+2 == dondeVa[0] && dondeEsta[1]-2 == dondeVa[1]) {
 							
 						} else if (dondeEsta[0]+1 == dondeVa[0] && dondeEsta[1]-1 == dondeVa[1]) {
 							
